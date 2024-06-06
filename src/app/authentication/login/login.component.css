@@ -1,0 +1,12 @@
+.login-card {
+  width: 40%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-card-header {
+  justify-content: center;
+  display: flex;
+}

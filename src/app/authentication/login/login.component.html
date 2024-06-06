@@ -1,0 +1,41 @@
+<mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-tile class="test-border">
+    <!-- Container containing the login form -->
+    <mat-card class="login-card">
+      <mat-card-header>
+        <h1>Sign in</h1>
+      </mat-card-header>
+      <mat-card-content class="login-card-content">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <p>
+            <mat-form-field>
+              <mat-label>Username</mat-label>
+              <input #username matInput placeholder="Username" formControlName="username">
+              <mat-hint>Max characters  {{ username.value.length }}/32</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input #password matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+          </p>
+
+          <mat-card-actions align="end">
+            <button
+              mat-flat-button color="primary"
+              [matTooltip]="!loginForm.valid ? 'Fill in the login form.' : ''"
+              [disabled]="!loginForm.valid"
+            >
+              Sign in
+            </button>
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile class="test-border">
+    Image
+  </mat-grid-tile>
+</mat-grid-list>
