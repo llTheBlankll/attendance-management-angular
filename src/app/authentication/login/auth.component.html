@@ -10,15 +10,14 @@
           <p>
             <mat-form-field>
               <mat-label>Username</mat-label>
-              <input #username matInput placeholder="Username" formControlName="username">
-              <mat-hint>Max characters  {{ username.value.length }}/32</mat-hint>
+              <input matInput placeholder="Username" formControlName="username" maxlength="32">
             </mat-form-field>
           </p>
 
           <p>
             <mat-form-field>
               <mat-label>Password</mat-label>
-              <input #password matInput placeholder="Password" formControlName="password">
+              <input matInput placeholder="Password" type="password" formControlName="password" max="64">
             </mat-form-field>
           </p>
 
