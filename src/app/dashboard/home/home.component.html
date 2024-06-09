@@ -1,0 +1,28 @@
+<app-top-navigation [sidenav]="sidenav">
+
+</app-top-navigation>
+
+<mat-drawer-container hasBackdrop="false" autosize class="sidenav-container">
+  <mat-drawer mode="side" opened #sidenav>
+    <mat-list>
+      <mat-list-item style="height: 180px; text-align: center;">
+        <img ngSrc="/logo.jpg" alt="" height="180" width="180" priority>
+      </mat-list-item>
+      <mat-list-item style="text-align: center;">
+        <h3>
+          Punturin Senior High School
+        </h3>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list type="side">
+      @for (link of sidenavLinks; track link.title) {
+        <a mat-list-item [routerLink]="link.routerLink" (click)="(link.title == 'Logout') ? logOut() : undefined">
+          {{ link.title }}
+        </a>
+      }
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content class="sidenav-content">
+  </mat-drawer-content>
+</mat-drawer-container>
