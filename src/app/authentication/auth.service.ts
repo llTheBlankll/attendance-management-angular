@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable, of} from "rxjs";
-import {LoginDTO, ResponseMessage, ResponseMessageV2, ResponseStatus} from "../DTOList";
+import {LoginDTO, ResponseMessage, StatusMessageResponse, ResponseStatus} from "../DTOList";
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +19,9 @@ export class AuthService {
     let username: string | null = sessionStorage.getItem("username");
 
     if (token && username) {
-      this.http.post<HttpResponse<ResponseMessageV2>>(this.baseUrl + `/api/auth/is-valid?token=${token}&username=${username}`, {responseType: 'json', observe: 'response'})
+      this.http.post<HttpResponse<StatusMessageResponse>>(this.baseUrl + `/api/auth/is-valid?token=${token}&username=${username}`, {responseType: 'json', observe: 'response'})
         .pipe(
-          map((response: HttpResponse<ResponseMessageV2>) => {
+          map((response: HttpResponse<StatusMessageResponse>) => {
             let message = response.body;
 
             if (message?.status == ResponseStatus.VALID) {
