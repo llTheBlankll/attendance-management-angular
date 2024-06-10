@@ -24,5 +24,122 @@
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content class="sidenav-content">
+    <mat-grid-list cols="8" gutterSize="36px" rowHeight="1:1">
+      <mat-grid-tile colspan="2" class="w-100 mat-elevation-z3">
+        <mat-card class="h-100 w-100">
+          <mat-card-header>
+            <div class="flex align-items-center">
+              <mat-icon>person</mat-icon>
+              <h2>
+                Total Students
+              </h2>
+            </div>
+          </mat-card-header>
+          <mat-card-content class="flex h-100">
+            <div class="flex h-100 w-100 justify-content-center align-items-center">
+              <h2>
+                {{ this.totalStudents }}
+              </h2>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" class="w-100 mat-elevation-z3">
+        <mat-card class="h-100 w-100">
+          <mat-card-header>
+            <h2>
+              Late Attendance
+            </h2>
+          </mat-card-header>
+          <mat-card-content class="flex h-100">
+            <div class="flex h-100 w-100 justify-content-center align-items-center">
+              <h2>
+                {{ this.lateAttendance }}
+              </h2>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" class="w-100 mat-elevation-z3">
+        <mat-card class="h-100 w-100">
+          <mat-card-header>
+            <h2>
+              On Time Attendance
+            </h2>
+          </mat-card-header>
+          <mat-card-content class="flex h-100">
+            <div class="flex h-100 w-100 justify-content-center align-items-center">
+              <h2>
+                {{ this.onTimeAttendance }}
+              </h2>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" class="w-100 mat-elevation-z3">
+        <mat-card class="h-100 w-100">
+          <mat-card-header>
+            <h3>
+              Absent Students
+            </h3>
+          </mat-card-header>
+          <mat-card-content class="flex h-100">
+            <div class="flex h-100 w-100 justify-content-center align-items-center">
+              <h3>
+                {{ this.absentAttendance }}
+              </h3>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="4" class="h-25 w-100" rowspan="1.5">
+        <mat-card class="h-90 w-100">
+          <mat-card-header class="flex flex-row">
+            <div class="flex w-50 h-100 align-items-center" style="justify-content: start">
+              <h3>
+                Attendance Overview
+              </h3>
+            </div>
+            <div class="flex w-100 h-100 align-items-center" style="justify-content: end;">
+              <button mat-flat-button
+                      [ngClass]="{'me-2 button-rectangle': true, 'active': _getAttendanceOverviewBy == 2}"
+                      (click)="this.getAttendanceOverviewBy = 2;">Monthly
+              </button>
+              <button mat-flat-button
+                      [ngClass]="{'me-2 button-rectangle': true, 'active': _getAttendanceOverviewBy == 1}"
+                      (click)="this.getAttendanceOverviewBy = 1">Weekly
+              </button>
+              <button mat-flat-button
+                      [ngClass]="{'me-2 button-rectangle': true, 'active': _getAttendanceOverviewBy == 0}"
+                      (click)="this.getAttendanceOverviewBy = 0">Today
+              </button>
+            </div>
+          </mat-card-header>
+          <mat-card-content class="w-100 h-80">
+            <div class="w-100 h-100" style="position: relative;">
+              <canvas id="attendanceOverviewChart" class="h-100 w-100">
+                {{ attendanceOverviewChart }}
+              </canvas>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="4" class="h-25 w-100" rowspan="1.5">
+        <mat-card class="h-90 w-100">
+          <mat-card-header class="flex flex-row">
+            <h3>
+              Real Time Attendance
+            </h3>
+          </mat-card-header>
+          <mat-card-content class="w-100 h-80">
+            <div class="w-100 h-100" style="position: relative;">
+              <canvas id="realTimeAttendanceChart" class="h-100 w-100">
+                {{ realTimeAttendanceChart }}
+              </canvas>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>

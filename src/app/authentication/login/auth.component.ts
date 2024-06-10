@@ -8,7 +8,7 @@ import {MatButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
-import {LoginDTO, LoginToken} from '../../DTOList';
+import {LoginDTO, LoginToken} from '../../DTO/DTOList';
 import {catchError, map, of} from "rxjs";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";

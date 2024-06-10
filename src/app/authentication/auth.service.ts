@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable, of} from "rxjs";
-import {LoginDTO, ResponseMessage, StatusMessageResponse, ResponseStatus} from "../DTOList";
+import {LoginDTO, StatusMessageResponse, ResponseStatus} from "../DTO/DTOList";
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +40,6 @@ export class AuthService {
 
   login(login: LoginDTO): Observable<any> {
     console.log("Requesting login to " + this.loginUrl);
-    return this.http.post<LoginDTO | ResponseMessage>(this.loginUrl, login, {responseType: 'json', observe: 'response'});
+    return this.http.post<LoginDTO | StatusMessageResponse>(this.loginUrl, login, {responseType: 'json', observe: 'response'});
   }
 }
