@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {MatDrawer, MatDrawerContainer, MatDrawerContent, MatSidenav} from "@angular/material/sidenav";
-import {MatList, MatListItem, MatNavList} from "@angular/material/list";
+import {MatList, MatListItem, MatListItemIcon, MatNavList} from "@angular/material/list";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgOptimizedImage} from "@angular/common";
@@ -11,6 +11,7 @@ import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatButton} from "@angular/material/button";
 import 'chartjs-adapter-moment';
 import {DashboardComponent} from "../../components/dashboard/dashboard.component";
+import {MatLine} from "@angular/material/core";
 
 enum AttendanceDay {
   TODAY,
@@ -48,7 +49,9 @@ interface SideNavLink {
     MatCardContent,
     MatButton,
     NgClass,
-    DashboardComponent
+    DashboardComponent,
+    MatLine,
+    MatListItemIcon
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -61,7 +64,7 @@ export class HomeComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
 
 }

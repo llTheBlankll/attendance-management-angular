@@ -1,5 +1,4 @@
 <app-top-navigation [sidenav]="sidenav">
-
 </app-top-navigation>
 
 <mat-drawer-container hasBackdrop="false" autosize class="sidenav-container">
@@ -15,15 +14,15 @@
       </mat-list-item>
     </mat-list>
     <mat-divider></mat-divider>
-    <mat-nav-list type="side">
+    <mat-nav-list>
       @for (link of sidenavLinks; track link.title) {
         <a mat-list-item [routerLink]="link.routerLink">
-          <div class="flex align-items-center">
-            <mat-icon class="me-2">
+            <mat-icon matListItemIcon class="">
               {{ link.icon }}
             </mat-icon>
+          <span matListItemLine>
           {{ link.title }}
-          </div>
+          </span>
         </a>
       }
     </mat-nav-list>

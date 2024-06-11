@@ -81,7 +81,6 @@ export class DashboardComponent implements OnInit {
   protected realTimeAttendanceChart: any;
   protected _getAttendanceOverviewBy: AttendanceDay = AttendanceDay.TODAY;
 
-
   // On Time, Late, Absent, and Total Students
   protected onTimeAttendance: number = 0;
   protected lateAttendance: number = 0;
@@ -170,18 +169,17 @@ export class DashboardComponent implements OnInit {
       this.totalStudents = response;
     });
 
-    this.attendanceService.countAttendance(new DateRange(new Date(), new Date()), Status.ON_TIME).subscribe((response: HttpResponse<number>) => {
-      console.log(response);
+    let currentDate = new Date();
+
+    this.attendanceService.countAttendance(new DateRange(currentDate, currentDate), Status.ON_TIME).subscribe((response: HttpResponse<number>) => {
       this.onTimeAttendance = response.body as number;
     });
 
-    this.attendanceService.countAttendance(new DateRange(new Date(), new Date()), Status.LATE).subscribe((response: HttpResponse<number>) => {
-      console.log(response);
+    this.attendanceService.countAttendance(new DateRange(currentDate, currentDate), Status.LATE).subscribe((response: HttpResponse<number>) => {
       this.lateAttendance = response.body as number;
     });
 
-    this.attendanceService.countAttendance(new DateRange(new Date(), new Date()), Status.ABSENT).subscribe((response: HttpResponse<number>) => {
-      console.log(response);
+    this.attendanceService.countAttendance(new DateRange(currentDate, currentDate), Status.ABSENT).subscribe((response: HttpResponse<number>) => {
       this.absentAttendance = response.body as number;
     });
   }
@@ -309,8 +307,10 @@ export class DashboardComponent implements OnInit {
     this.realTimeNotificationWebSocket.connect().subscribe((event: MessageEvent) => {
       const data: WebSocketResponse = JSON.parse(event.data);
       if (data.status == Status.LATE) {
+        this.lateAttendance++;
         this.addRealTimeAttendanceChartData(1, 0);
       } else if (data.status == Status.ON_TIME) {
+        this.onTimeAttendance++;
         this.addRealTimeAttendanceChartData(1, 1);
       } else if (data.status == Status.SIGNED_OUT) {
         this.addRealTimeAttendanceChartData(1, 2);
@@ -328,7 +328,7 @@ export class DashboardComponent implements OnInit {
       section: data.student.section.sectionName,
       time: new Date().toLocaleTimeString(),
       date: new Date().toLocaleDateString(),
-      status: data.status
+      status: data.status.replace("_", " ")
     });
 
     // Remove the outdated data from the recent activities
