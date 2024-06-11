@@ -43,7 +43,7 @@ export class AuthComponent {
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.minLength(3), Validators.maxLength(32), Validators.required]),
     password: new FormControl('', [Validators.minLength(5), Validators.maxLength(128), Validators.required])
-  })
+  });
 
   constructor(private loginService: AuthService, private alert: MatSnackBar, private router: Router) {
     this.loginService = loginService;

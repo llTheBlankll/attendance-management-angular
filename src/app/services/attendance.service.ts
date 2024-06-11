@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
+import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {DateRange, Status} from "../../DTO/DTOList";
+import {DateRange, Status} from "../DTO/DTOList";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -17,4 +17,6 @@ export class AttendanceService {
   countAttendance(dateRange: DateRange, status: Status): Observable<any> {
     return this.http.post(this.apiUrl + `/api/v1/attendances/status/${status}/date-range`, dateRange, {observe: 'response', responseType: 'json'});
   }
+
+
 }

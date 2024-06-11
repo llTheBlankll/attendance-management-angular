@@ -23,7 +23,6 @@ export class AuthService {
         .pipe(
           map((response: HttpResponse<StatusMessageResponse>) => {
             let message = response.body;
-
             if (message?.status == ResponseStatus.VALID) {
               return of(true);
             }
@@ -34,7 +33,6 @@ export class AuthService {
 
       return true;
     }
-
     return false;
   }
 
