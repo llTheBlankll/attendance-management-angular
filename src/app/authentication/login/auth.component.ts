@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {MatSlideToggle} from "@angular/material/slide-toggle";
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
@@ -13,6 +13,9 @@ import {catchError, map, of} from "rxjs";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {TeacherService} from "../../services/teacher/teacher.service";
+import {Teacher} from "../../DTO/WebSocketResponse";
+import {Roles} from "../../enums/Roles";
 
 @Component({
   selector: 'app-login',
@@ -40,6 +43,8 @@ import {Router} from "@angular/router";
 })
 export class AuthComponent {
 
+  teacherService: TeacherService = inject(TeacherService);
+
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.minLength(3), Validators.maxLength(32), Validators.required]),
     password: new FormControl('', [Validators.minLength(5), Validators.maxLength(128), Validators.required])
@@ -53,6 +58,15 @@ export class AuthComponent {
     this.alert.open("Username or Password is Incorrect", "Close");
   }
 
+  saveUserInfo(loginToken: LoginToken): void {
+    // Save user info to session storage
+    sessionStorage.setItem("token", loginToken.token);
+    sessionStorage.setItem("username", loginToken.username);
+    sessionStorage.setItem("role", loginToken.role.toString());
+    sessionStorage.setItem("expiration", loginToken.expiration);
+    sessionStorage.setItem("user_id", loginToken.user.id.toString())
+  }
+
   login(): void {
     // Do authentication
     let loginData: LoginDTO = this.loginForm.value;
@@ -64,17 +78,24 @@ export class AuthComponent {
           console.log("Login successful");
           // Get token
           let loginToken: LoginToken = response.body;
-          // Save user info to session storage
-          sessionStorage.setItem("token", loginToken.token);
-          sessionStorage.setItem("username", loginToken.username);
-          sessionStorage.setItem("role", loginToken.role);
-          sessionStorage.setItem("expiration", loginToken.expiration);
 
           // Show alert message
           this.alert.open("Login successful", "Close");
 
-          // Redirect to home page
-          this.router.navigate(["/dashboard"]).then(_ => console.log("Redirected to dashboard"));
+          // Save user info to session storage
+          this.saveUserInfo(loginToken);
+
+          // Redirect to home page.
+          const role = Roles[loginToken.role as unknown as keyof typeof Roles];
+          if (role == Roles.ADMIN) {
+            console.log("Redirecting to admin dashboard");
+            this.router.navigate(["/dashboard"]).then(_ => console.log("Redirected to admin dashboard"));
+          } else if (role == Roles.TEACHER) {
+            console.log("Redirecting to teacher dashboard");
+            this.redirectToTeacherDashboard(loginToken);
+          } else {
+            console.error("Invalid role: " + loginToken.role);
+          }
         }),
         catchError((error: HttpErrorResponse) => {
           if (error.status === 400) {
@@ -87,5 +108,16 @@ export class AuthComponent {
       // Show error message
       this.alert.open("Invalid credentials", "Close");
     }
+  }
+
+  redirectToTeacherDashboard(loginToken: LoginToken): void {
+    this.teacherService.getTeacherByUserId(loginToken.user.id).subscribe((response: HttpResponse<Teacher>) => {
+      console.log("Getting teacher by user id");
+      if (response.status === 200 && response.body != null) {
+        let teacher: Teacher = response.body;
+        sessionStorage.setItem("teacher_id", teacher.id.toString());
+      }
+      this.router.navigate(["/dashboard"]).then(_ => console.log("Redirected to teacher dashboard"));
+    });
   }
 }

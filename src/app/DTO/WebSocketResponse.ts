@@ -1,4 +1,5 @@
 import {Status} from "./DTOList";
+import {User} from "./User";
 
 export interface WebSocketResponse {
   student: Student;
@@ -54,5 +55,6 @@ export interface Teacher {
   id: number
   firstName: string
   lastName: string
-  sex: string
+  sex: string;
+  user: User;
 }

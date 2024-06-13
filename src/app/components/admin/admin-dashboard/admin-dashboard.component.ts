@@ -3,14 +3,14 @@ import {MatButton} from "@angular/material/button";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import {MatIcon} from "@angular/material/icon";
-import {AttendanceLineChartService} from "../../services/charts/attendance/attendance-line-chart.service";
-import {StudentService} from "../../services/student.service";
-import {AttendanceService} from "../../services/attendance.service";
-import {AttendanceSubscriberWebSocketService} from "../../services/websockets/attendance-subscriber-web-socket.service";
-import {DateRange, LineChartDTO, Status} from "../../DTO/DTOList";
+import {AttendanceLineChartService} from "../../../services/charts/attendance/attendance-line-chart.service";
+import {StudentService} from "../../../services/student/student.service";
+import {AttendanceService} from "../../../services/attendance/attendance.service";
+import {AttendanceSubscriberWebSocketService} from "../../../services/websockets/attendance-subscriber-web-socket.service";
+import {DateRange, LineChartDTO, Status} from "../../../DTO/DTOList";
 import {HttpResponse} from "@angular/common/http";
 import {Chart} from "chart.js/auto";
-import {WebSocketResponse} from "../../DTO/WebSocketResponse";
+import {WebSocketResponse} from "../../../DTO/WebSocketResponse";
 import {NgClass, NgIf} from "@angular/common";
 import {
   MatCell,
@@ -42,7 +42,7 @@ interface RecentActivitiesRow {
 }
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-admin-dashboard',
   standalone: true,
   imports: [
     MatButton,
@@ -67,10 +67,10 @@ interface RecentActivitiesRow {
     NgIf,
     MatChip
   ],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  templateUrl: './admin-dashboard.component.html',
+  styleUrl: './admin-dashboard.component.css'
 })
-export class DashboardComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit {
 
   private attendanceChartsService = inject(AttendanceLineChartService);
   private studentService = inject(StudentService);

@@ -17,4 +17,8 @@ export class AttendanceLineChartService {
   getAttendanceLineChart(status: Status, dateRange: DateRange): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/v1/attendances/graphic-organizers/line-chart?status=${status}`, dateRange, {observe: 'response', responseType: 'json'});
   }
+
+  getSectionAttendanceLineChart(sectionId: number, status: Status, dateRange: DateRange): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/v1/attendances/graphic-organizers/sections/${sectionId}/line-chart?status=${status}`, dateRange, {observe: 'response', responseType: 'json'});
+  }
 }

@@ -1,3 +1,6 @@
+import {User} from "./User";
+import {Roles} from "../enums/Roles";
+
 export enum ResponseStatus {
   SUCCESS = "SUCCESS",
   FAILURE = "FAILURE",
@@ -31,8 +34,9 @@ export class DateRange {
 export interface LoginToken {
   username: string;
   token: string;
-  role: string;
+  role: Roles;
   expiration: string;
+  user: User;
 }
 
 export interface LoginDTO {
