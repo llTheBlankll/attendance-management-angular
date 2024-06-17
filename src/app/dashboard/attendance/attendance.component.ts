@@ -32,7 +32,6 @@ import {
   MatTable,
   MatTableDataSource
 } from "@angular/material/table";
-import {Status} from "../../DTO/DTOList";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {HttpResponse} from "@angular/common/http";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
