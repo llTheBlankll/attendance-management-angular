@@ -1,0 +1,9 @@
+<app-side-navigation (selectedNavigation)="onNavigationSelected($event)" (sectionSelected)="onSectionSelected($event)">
+  @if (this.selectedNavigation == NavigationLinks.TEACHER_DASHBOARD && role == Roles.TEACHER) {
+    <app-teacher-dashboard [section]="this.sectionSelected"></app-teacher-dashboard>
+  } @else if (this.selectedNavigation == NavigationLinks.DASHBOARD && role == Roles.ADMIN) {
+    <app-admin-dashboard></app-admin-dashboard>
+  } @else if (this.selectedNavigation == NavigationLinks.ATTENDANCE) {
+    <app-attendance></app-attendance>
+  }
+</app-side-navigation>

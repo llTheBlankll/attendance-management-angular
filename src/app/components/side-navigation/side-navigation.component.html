@@ -1,0 +1,38 @@
+<app-top-header [sidenav]="sidenav" (sectionSelected)="onSectionSelected($event)">
+
+</app-top-header>
+
+<mat-drawer-container hasBackdrop="false" autosize class="sidenav-container">
+  <mat-drawer mode="side" opened #sidenav>
+    <mat-list>
+      <mat-list-item style="height: 180px; text-align: center;">
+        <img ngSrc="/logo.jpg" alt="" height="180" width="180" priority>
+      </mat-list-item>
+      <mat-list-item style="text-align: center;">
+        <h3>
+          Punturin Senior High School
+        </h3>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list>
+      @for (link of sidenavLinks; track $index) {
+        @if (link.userRoles?.includes(this.role)) {
+          <a mat-list-item (click)="this.selectedNavigation.emit(link.title)">
+            <mat-icon matListItemIcon class="material-symbols-rounded">
+              {{ link.icon }}
+            </mat-icon>
+            <span matListItemLine>
+            {{ link.title }}
+            </span>
+          </a>
+        }
+      }
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content class="sidenav-content">
+    <ng-content>
+
+    </ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

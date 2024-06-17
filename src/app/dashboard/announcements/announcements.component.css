@@ -1,0 +1,11 @@
+.announcement-content-card {
+  height: 150px !important;
+}
+
+.upcoming-events-card {
+  height: 250px !important;
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}

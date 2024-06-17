@@ -14,8 +14,8 @@ import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {TeacherService} from "../../services/teacher/teacher.service";
-import {Teacher} from "../../DTO/WebSocketResponse";
 import {Roles} from "../../enums/Roles";
+import {Teacher} from "../../DTO/TeacherDTO";
 
 @Component({
   selector: 'app-login',
@@ -85,7 +85,7 @@ export class AuthComponent {
           // Save user info to session storage
           this.saveUserInfo(loginToken);
 
-          // Redirect to home page.
+          // Redirect to side-navigation page.
           const role = Roles[loginToken.role as unknown as keyof typeof Roles];
           if (role == Roles.ADMIN) {
             console.log("Redirecting to admin dashboard");

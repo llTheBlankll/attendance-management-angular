@@ -1,0 +1,36 @@
+.sidenav-container {
+  width: auto;
+  height: 100%;
+  margin: 0;
+  border: 1px solid #bdbdbd;
+  /* The background property is added to clearly distinguish the borders between drawer and main
+     content */
+  background: #fcfcfc;
+}
+
+.sidenav-content {
+  padding: 16px;
+  height: 100%;
+}
+
+.list-item-link {
+  border: 0;
+  border-radius: 6px;
+}
+
+
+.active {
+  background-color: #8845d3 !important;
+}
+
+.h-90 {
+  height: 90%;
+}
+
+.h-80 {
+  height: 80%;
+}
+
+.pt-0 {
+  padding-top: 0;
+}

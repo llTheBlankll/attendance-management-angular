@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
+import {CountDTO} from "../../DTO/CountDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,12 @@ export class StudentService {
           subscriber.next(response as number);
         });
     })
+  }
+
+  countStudentsBySection(sectionId: number) {
+    return this.http.get<CountDTO>(this.apiUrl + `/api/v1/students/statistics/section?section=${sectionId}`, {
+      observe: 'response',
+      responseType: 'json'
+    });
   }
 }
