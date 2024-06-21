@@ -15,14 +15,14 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    let token: string | null = sessionStorage.getItem("token");
-    let username: string | null = sessionStorage.getItem("username");
+    const token: string | null = sessionStorage.getItem("token");
+    const username: string | null = sessionStorage.getItem("username");
 
     if (token && username) {
       this.http.post<HttpResponse<StatusMessageResponse>>(this.baseUrl + `/api/auth/is-valid?token=${token}&username=${username}`, {responseType: 'json', observe: 'response'})
         .pipe(
           map((response: HttpResponse<StatusMessageResponse>) => {
-            let message = response.body;
+            const message = response.body;
             if (message?.status == ResponseStatus.VALID) {
               return of(true);
             }

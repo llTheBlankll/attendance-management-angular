@@ -178,7 +178,7 @@ export class AttendanceComponent implements OnInit {
         return;
       }
 
-      let attendancePaging: AttendancePaging | null = response.body;
+      const attendancePaging: AttendancePaging | null = response.body;
 
       this.attendancePagination.pageSize = attendancePaging?.size ?? 0;
       this.attendancePagination.currentPage = attendancePaging?.number ?? 0;

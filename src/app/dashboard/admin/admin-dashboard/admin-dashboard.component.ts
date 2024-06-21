@@ -103,10 +103,10 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onGetAttendanceOverviewByChanged(): void {
-    let startDate = new Date();
+    const startDate = new Date();
     if (this._getAttendanceOverviewBy == AttendanceDay.TODAY) {
       // The End Date + 1 day
-      let endDate = new Date();
+      const endDate = new Date();
       endDate.setDate(endDate.getDate() + 1);
       this.updateAttendanceOverviewCharts(startDate, endDate);
     } else if (this._getAttendanceOverviewBy == AttendanceDay.WEEKLY) {
@@ -131,7 +131,7 @@ export class AdminDashboardComponent implements OnInit {
         return;
       }
 
-      let data: LineChartDTO | null = response.body;
+      const data: LineChartDTO | null = response.body;
       if (data != null) {
         this.updateAttendanceOverviewData(data.labels, data.data, 0);
       } else {
@@ -149,7 +149,7 @@ export class AdminDashboardComponent implements OnInit {
         return;
       }
 
-      let data: LineChartDTO | null = response.body;
+      const data: LineChartDTO | null = response.body;
 
       if (data != null) {
         this.updateAttendanceOverviewData(data.labels, data.data, 1);
@@ -168,7 +168,7 @@ export class AdminDashboardComponent implements OnInit {
         return;
       }
 
-      let data: LineChartDTO | null = response.body;
+      const data: LineChartDTO | null = response.body;
 
       if (data != null) {
         this.updateAttendanceOverviewData(data.labels, data.data, 2);
@@ -188,7 +188,7 @@ export class AdminDashboardComponent implements OnInit {
       this.totalStudents = response;
     });
 
-    let currentDate = new Date();
+    const currentDate = new Date();
 
     this.attendanceService.countAttendance(new DateRange(currentDate, currentDate), Status.ON_TIME).subscribe((response: HttpResponse<number>) => {
       this.onTimeAttendance = response.body as number;
@@ -368,13 +368,13 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   addRealTimeAttendanceChartData(data: number, dataset: number = 0) {
-    let now = new Date();
+    const now = new Date();
     now.setSeconds(0, 0);
-    let roundedTime = now.toLocaleTimeString("en-gb");
+    const roundedTime = now.toLocaleTimeString("en-gb");
     if (this.realTimeAttendanceChart) {
 
       // Before pushing the data, let's check if the data already exists and then add +1 to the data
-      let index = this.realTimeAttendanceChart.data.labels.indexOf(roundedTime);
+      const index = this.realTimeAttendanceChart.data.labels.indexOf(roundedTime);
       if (index != -1) {
         this.realTimeAttendanceChart.data.datasets[dataset].data[index] += data;
         this.realTimeAttendanceChart.update();

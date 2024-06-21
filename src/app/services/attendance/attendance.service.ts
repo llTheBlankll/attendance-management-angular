@@ -32,7 +32,7 @@ export class AttendanceService {
   }
 
   countAttendanceInSectionByDate(sectionId: number, date: Date, status: Status): Observable<any> {
-    let formattedDate: string = date.toISOString().split('T')[0];
+    const formattedDate: string = date.toISOString().split('T')[0];
     return this.http.get<CountDTO>(this.apiUrl + `/status/${status}/section/${sectionId}/date?date=${formattedDate}`, {
       observe: 'response',
       responseType: 'json'
@@ -40,7 +40,7 @@ export class AttendanceService {
   }
 
   getAllSectionAndGradeLevelAttendanceByDate(sectionId: number, gradeLevelId: number, date: Date, page: number, size: number, sortBy: string = "date", orderBy: SortDirection = SortDirection.ASC): Observable<any> {
-    let formattedDate = date.toISOString().split('T')[0];
+    const formattedDate = date.toISOString().split('T')[0];
 
     return this.http.get(this.apiUrl + `/statistics/section/${sectionId}/grade-level/${gradeLevelId}/date`, {
       params: {

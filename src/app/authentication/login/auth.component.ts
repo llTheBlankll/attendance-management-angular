@@ -69,7 +69,7 @@ export class AuthComponent {
 
   login(): void {
     // Do authentication
-    let loginData: LoginDTO = this.loginForm.value;
+    const loginData: LoginDTO = this.loginForm.value;
     if (loginData.username.length < 32) {
       console.log("Logging in");
       // Check if status code 200
@@ -77,7 +77,7 @@ export class AuthComponent {
         map((response: HttpResponse<any>) => {
           console.log("Login successful");
           // Get token
-          let loginToken: LoginToken = response.body;
+          const loginToken: LoginToken = response.body;
 
           // Show alert message
           this.alert.open("Login successful", "Close");
@@ -114,7 +114,7 @@ export class AuthComponent {
     this.teacherService.getTeacherByUserId(loginToken.user.id).subscribe((response: HttpResponse<Teacher>) => {
       console.log("Getting teacher by user id");
       if (response.status === 200 && response.body != null) {
-        let teacher: Teacher = response.body;
+        const teacher: Teacher = response.body;
         sessionStorage.setItem("teacher_id", teacher.id.toString());
       }
       this.router.navigate(["/dashboard"]).then(_ => console.log("Redirected to teacher dashboard"));
