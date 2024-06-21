@@ -103,7 +103,7 @@ export class SideNavigationComponent implements OnInit {
       userRoles: [Roles.ADMIN, Roles.TEACHER]
     },
     {
-      icon: "person_add",
+      icon: "groups",
       title: (this.role == Roles.TEACHER) ? 'Your Students' : 'Students',
       routerLink: '/dashboard/students',
       userRoles: [Roles.ADMIN, Roles.TEACHER]
