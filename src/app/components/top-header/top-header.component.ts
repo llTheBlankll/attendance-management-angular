@@ -55,7 +55,7 @@ export class TopHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     // Check role
-    let userRole = Roles[sessionStorage.getItem("role") as keyof typeof Roles];
+    const userRole = Roles[sessionStorage.getItem("role") as keyof typeof Roles];
     if (userRole === Roles.TEACHER) {
       console.log("Teacher role detected");
       // Get All Sections
