@@ -4,8 +4,8 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CountDTO} from "../../DTO/CountDTO";
 import {Student, StudentPaging} from "../../DTO/StudentDTO";
-import {StatusMessageResponse} from "../../DTO/DTOList";
 import {SortDirection} from "../../enums/SortDirection";
+import {StatusMessageResponse} from "../../DTO/StatusMessageResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -139,5 +139,9 @@ export class StudentService {
         orderBy: orderBy
       }
     });
+  }
+
+  public isStudent(obj: any): obj is Student {
+    return 'id' in obj && 'name' in obj; // replace 'id' and 'name' with actual properties of Student
   }
 }

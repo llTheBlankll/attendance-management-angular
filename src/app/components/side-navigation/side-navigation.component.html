@@ -2,8 +2,8 @@
 
 </app-top-header>
 
-<mat-drawer-container hasBackdrop="false" autosize class="sidenav-container">
-  <mat-drawer mode="side" opened #sidenav>
+<mat-drawer-container class="sidenav-container" [hasBackdrop]="true" autosize>
+  <mat-drawer mode="push" #sidenav>
     <mat-list>
       <mat-list-item style="height: 180px; text-align: center;">
         <img ngSrc="/logo.jpg" alt="" height="180" width="180" priority>
