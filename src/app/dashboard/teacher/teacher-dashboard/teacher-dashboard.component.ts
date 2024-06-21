@@ -395,7 +395,7 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
 
     // Count the total number of students in a section
     this.studentService.countStudentsBySection(this.section).subscribe((response: HttpResponse<CountDTO>) => {
-      if (response.body === undefined) {
+      if (response.body === undefined || response.body === null) {
         console.error("Error: No data found for Total Students");
         return;
       }
@@ -403,21 +403,21 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
       this.totalStudents = response.body.count as number ?? 1000;
     });
     this.attendanceService.countAttendanceInSectionByDate(this.section, currentDate, Status.ON_TIME).subscribe((response: HttpResponse<CountDTO>) => {
-      if (response.body === undefined) {
+      if (response.body === undefined || response.body === null) {
         console.error("Error: No data found for On Time Attendance");
         return;
       }
       this.onTimeAttendance = response.body.count as number ?? 1000;
     });
     this.attendanceService.countAttendanceInSectionByDate(this.section, currentDate, Status.LATE).subscribe((response: HttpResponse<CountDTO>) => {
-      if (response.body === undefined) {
+      if (response.body === undefined || response.body === null) {
         console.error("Error: No data found for Late Attendance");
         return;
       }
       this.lateAttendance = response.body.count ?? 1000;
     });
     this.attendanceService.countAttendanceInSectionByDate(this.section, currentDate, Status.ABSENT).subscribe((response: HttpResponse<CountDTO>) => {
-      if (response.body === undefined) {
+      if (response.body === undefined || response.body === null) {
         console.error("Error: No data found for Absent Attendance");
         return;
       }
