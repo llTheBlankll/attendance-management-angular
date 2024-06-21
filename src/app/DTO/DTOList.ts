@@ -44,16 +44,6 @@ export interface LoginDTO {
   password: string;
 }
 
-export class StatusMessageResponse {
-  message: string;
-  status: ResponseStatus;
-
-  constructor(message: string, status: ResponseStatus) {
-    this.message = message;
-    this.status = status;
-  }
-}
-
 export interface LineChartDTO {
   labels: string[];
   data: number[];

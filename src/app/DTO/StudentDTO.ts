@@ -13,7 +13,7 @@ export interface Student {
   sex: string;
   section: Section;
   address: string;
-  birthdate: Date;
+  birthdate: string;
 }
 
 export interface StudentPaging {
