@@ -8,6 +8,7 @@ import {Roles} from "../../enums/Roles";
 import {AttendanceComponent} from "../attendance/attendance.component";
 import {AnnouncementsComponent} from "../announcements/announcements.component";
 import {TeacherStudentsComponent} from "../teacher/teacher-students/teacher-students.component";
+import {TeacherSectionComponent} from "../teacher/teacher-section/teacher-section.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,8 @@ import {TeacherStudentsComponent} from "../teacher/teacher-students/teacher-stud
     AdminDashboardComponent,
     AttendanceComponent,
     AnnouncementsComponent,
-    TeacherStudentsComponent
+    TeacherStudentsComponent,
+    TeacherSectionComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'

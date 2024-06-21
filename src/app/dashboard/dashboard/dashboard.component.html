@@ -1,13 +1,15 @@
 <app-side-navigation (selectedNavigation)="onNavigationSelected($event)" (sectionSelected)="onSectionSelected($event)">
-  @if (this.selectedNavigation == NavigationLinks.TEACHER_DASHBOARD && role == Roles.TEACHER) {
+  @if (this.selectedNavigation === NavigationLinks.TEACHER_DASHBOARD && role === Roles.TEACHER) {
     <app-teacher-dashboard [section]="this.sectionSelected"></app-teacher-dashboard>
-  } @else if (this.selectedNavigation == NavigationLinks.DASHBOARD && role == Roles.ADMIN) {
+  } @else if (this.selectedNavigation === NavigationLinks.DASHBOARD && role === Roles.ADMIN) {
     <app-admin-dashboard></app-admin-dashboard>
-  } @else if (this.selectedNavigation == NavigationLinks.ATTENDANCE) {
+  } @else if (this.selectedNavigation === NavigationLinks.ATTENDANCE) {
     <app-attendance></app-attendance>
-  } @else if (this.selectedNavigation == NavigationLinks.ANNOUNCEMENTS) {
+  } @else if (this.selectedNavigation === NavigationLinks.ANNOUNCEMENTS) {
     <app-announcements></app-announcements>
-  } @else if (this.selectedNavigation == NavigationLinks.TEACHER_STUDENTS) {
+  } @else if (this.selectedNavigation === NavigationLinks.TEACHER_STUDENTS) {
     <app-teacher-students [section]="this.sectionSelected"></app-teacher-students>
+  } @else if (this.selectedNavigation === NavigationLinks.TEACHER_SECTION && role === Roles.TEACHER) {
+    <app-teacher-section [section]="this.sectionSelected"></app-teacher-section>
   }
 </app-side-navigation>
