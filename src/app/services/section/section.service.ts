@@ -64,7 +64,7 @@ export class SectionService {
   }
 
   public getAllSectionsNoPaging() {
-    return this.http.get<Section[]>(this.apiUrl + `/all`, {
+    return this.http.get<Section[]>(this.apiUrl + "/all", {
       params: {
         noPaging: true
       },
@@ -74,7 +74,7 @@ export class SectionService {
   }
 
   public getAllSections(page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName"): Observable<any> {
-    return this.http.get(this.apiUrl + `/all`, {
+    return this.http.get(this.apiUrl + "/all", {
       params: {
         page: page,
         size: size,
@@ -91,7 +91,7 @@ export class SectionService {
   }
 
   public getSectionsByTeacher(teacherId: number, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName") {
-    return this.http.get(this.apiUrl + `/teacher`, {
+    return this.http.get(this.apiUrl + "/teacher", {
       params: {
         teacherId: teacherId,
         page: page,
@@ -105,7 +105,7 @@ export class SectionService {
   }
 
   public getSectionsByGradeLevel(gradeLevelId: number, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName") {
-    return this.http.get(this.apiUrl + `/grade-level`, {
+    return this.http.get(this.apiUrl + "/grade-level", {
       params: {
         gradeLevelId: gradeLevelId,
         page: page,
@@ -119,7 +119,7 @@ export class SectionService {
   }
 
   public searchSections(room: string, name: string, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName") {
-    return this.http.get(this.apiUrl + `/search`, {
+    return this.http.get(this.apiUrl + "/search", {
       params: {
         room: room,
         name: name,

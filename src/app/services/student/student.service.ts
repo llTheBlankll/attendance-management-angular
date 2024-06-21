@@ -21,7 +21,7 @@ export class StudentService {
   countStudents(): Observable<number> {
     return new Observable<number>(subscriber => {
 
-      this.http.get<number>(this.apiUrl + `/api/v1/students/statistics/all`)
+      this.http.get<number>(this.apiUrl + "/api/v1/students/statistics/all")
         .subscribe(response => {
           const responseType: string = typeof (response);
           if (responseType == "number") {
@@ -48,7 +48,7 @@ export class StudentService {
   }
 
   public createStudent(student: Student): Observable<HttpResponse<StatusMessageResponse>> {
-    return this.http.post<StatusMessageResponse>(this.apiUrl + `/api/v1/students/create`, student,
+    return this.http.post<StatusMessageResponse>(this.apiUrl + "/api/v1/students/create", student,
       {
         observe: 'response',
         responseType: 'json'
@@ -91,7 +91,7 @@ export class StudentService {
   }
 
   public getStudentByGuardianId(guardianId: number): Observable<HttpResponse<Student | StatusMessageResponse>> {
-    return this.http.get<Student | StatusMessageResponse>(this.apiUrl + `/api/v1/students/by-guardian`, {
+    return this.http.get<Student | StatusMessageResponse>(this.apiUrl + "/api/v1/students/by-guardian", {
       observe: 'response',
       responseType: 'json',
       params: {
@@ -101,7 +101,7 @@ export class StudentService {
   }
 
   public searchStudents(firstName: string, lastName: string, page: number, size: number, sortBy: string = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
-    return this.http.get<StudentPaging>(this.apiUrl + `/api/v1/students/search`, {
+    return this.http.get<StudentPaging>(this.apiUrl + "/api/v1/students/search", {
       observe: 'response',
       responseType: 'json',
       params: {
