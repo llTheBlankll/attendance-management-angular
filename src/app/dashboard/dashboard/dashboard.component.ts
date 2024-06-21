@@ -30,7 +30,7 @@ export class DashboardComponent {
 
   // Side Navigations data
   selectedNavigation: NavigationLinks = NavigationLinks.DASHBOARD;
-  sectionSelected: number = 0;
+  sectionSelected = 0;
 
   // Get Role
   protected roleString = sessionStorage.getItem("role") ?? "GUEST";

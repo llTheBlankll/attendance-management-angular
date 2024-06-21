@@ -56,7 +56,7 @@ export class TeacherStudentsListComponent implements OnInit, OnChanges {
   studentService: StudentService = inject(StudentService);
 
   @Input()
-  public section: number = 0;
+  public section = 0;
 
   @Output()
   public selectedStudent: EventEmitter<number> = new EventEmitter<number>();

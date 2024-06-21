@@ -39,7 +39,7 @@ export class AttendanceService {
     });
   }
 
-  getAllSectionAndGradeLevelAttendanceByDate(sectionId: number, gradeLevelId: number, date: Date, page: number, size: number, sortBy: string = "date", orderBy: SortDirection = SortDirection.ASC): Observable<any> {
+  getAllSectionAndGradeLevelAttendanceByDate(sectionId: number, gradeLevelId: number, date: Date, page: number, size: number, sortBy = "date", orderBy: SortDirection = SortDirection.ASC): Observable<any> {
     const formattedDate = date.toISOString().split('T')[0];
 
     return this.http.get(this.apiUrl + `/statistics/section/${sectionId}/grade-level/${gradeLevelId}/date`, {

@@ -31,7 +31,7 @@ export class TeacherStudentsDetailsComponent {
 
   constructor() { }
 
-  public studentSelected: number = 0;
+  public studentSelected = 0;
 
   // Add your logic here...
 }
