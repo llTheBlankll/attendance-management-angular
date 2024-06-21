@@ -1,23 +1,78 @@
-<mat-grid-list rowHeight="1:1" cols="9" gutterSize="32px">
-  <mat-grid-tile>
-    
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="3" rowspan="4" class="mat-elevation-z4">
+<mat-grid-list rowHeight="2:1" cols="12" gutterSize="32px">
+  <!--  Region: Total Students Pie Chart -->
+  <mat-grid-tile [colspan]="6" rowspan="6" class="mat-elevation-z4">
     <mat-card class="w-100 h-100">
       <mat-card-header class="mb-3">
-        <mat-card-title>Students</mat-card-title>
-        <mat-card-subtitle>Manage students</mat-card-subtitle>
+        <mat-card-title>
+          Total Students
+        </mat-card-title>
       </mat-card-header>
       <mat-divider></mat-divider>
-      <mat-card-content class="p-3">
-        <app-teacher-students-list [section]="this.section" (selectedStudent)="this.onStudentSelected($event)"></app-teacher-students-list>
+      <mat-card-content class="mb-3">
+        <!-- Pie Chart -->
+        <div class="pie-chart-container mb-3">
+          <canvas id="pieChart">
+
+          </canvas>
+        </div>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>
+  <!-- Region: Top 10 Students with Complete Attendance in the Section -->
+  <mat-grid-tile [colspan]="6" rowspan="6" class="mat-elevation-z4">
+    <mat-card class="w-100 h-100">
+      <mat-card-header class="mb-3">
+        <mat-card-title>
+          Top 10 Students with Complete Attendance
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="mb-3">
+        <app-top-10-students-list [section]="this.section">
 
+        </app-top-10-students-list>
+        <!-- Table containing students -->
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile [colspan]="3" [rowspan]="4" class="mat-elevation-z4">
-    <app-teacher-students-details class="w-100 h-100"></app-teacher-students-details>
+  <!-- Region: Manage Students -->
+  <mat-grid-tile [colspan]="8" rowspan="10" class="mat-elevation-z4">
+    <mat-card class="w-100 h-100">
+      <mat-card-header class="mb-3">
+        <mat-card-title>
+          Students
+        </mat-card-title>
+        <mat-card-subtitle>Manage students</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="p-3" style="overflow: auto;">
+        <app-teacher-students-list [section]="this.section"
+                                   (selectedStudent)="this.onStudentSelected($event)">
+        </app-teacher-students-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <!-- Region: STUDENT DETAILS -->
+  <mat-grid-tile [colspan]="4" [rowspan]="10" class="mat-elevation-z4">
+    <mat-card class="h-100 w-100">
+      <mat-card-header class="p-3">
+        <mat-card-title-group>
+          <mat-card-title>
+            <div class="flex align-items-center">
+              <mat-icon class="me-2">info</mat-icon>
+              Student Details
+            </div>
+          </mat-card-title>
+          <mat-card-subtitle>
+            Student ID: {{ (studentSelected == 0) ? 'None' : (studentSelected) }}
+          </mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content class="p-3" style="overflow: auto;">
+        <app-teacher-students-details [studentSelected]="this.studentSelected">
+        </app-teacher-students-details>
+      </mat-card-content>
+    </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

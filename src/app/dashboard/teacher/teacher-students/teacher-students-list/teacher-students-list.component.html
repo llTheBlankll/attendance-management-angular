@@ -1,4 +1,4 @@
-<div style="height: 450px; overflow: auto;">
+<div style="height: 590px; overflow: auto;">
   <table [dataSource]="this.studentsTableDataSource" class="mat-elevation-z2 w-100 mb-3 overflow-auto" mat-table>
     <ng-container matColumnDef="lrn">
       <th *matHeaderCellDef mat-header-cell>Learner Reference No.</th>
@@ -8,12 +8,16 @@
       <th *matHeaderCellDef mat-header-cell>Full Name</th>
       <td *matCellDef="let student" mat-cell>{{ student.name }}</td>
     </ng-container>
+    <ng-container matColumnDef="sexuality">
+      <th *matHeaderCellDef mat-header-cell>Sexuality</th>
+      <td *matCellDef="let student" mat-cell>{{ student.sexuality }}</td>
+    </ng-container>
     <ng-container matColumnDef="grade">
       <th *matHeaderCellDef mat-header-cell>Grade</th>
       <td *matCellDef="let student" mat-cell>{{ student.grade }}</td>
     </ng-container>
 
-    <td colspan="4" style="text-align: center;" *matNoDataRow>
+    <td colspan="5" style="text-align: center;" *matNoDataRow>
       <h3>
         No Students Found.
       </h3>
@@ -44,5 +48,4 @@
                [pageIndex]="this.studentListPaginator.currentPage"
                [length]="this.studentListPaginator.totalElements"
                [pageSize]="studentListPaginator.pageSize">
-
 </mat-paginator>

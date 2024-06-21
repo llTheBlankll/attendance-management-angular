@@ -1,19 +1,41 @@
-<mat-card class="h-100">
-  <mat-card-header class="p-3">
-    <mat-card-title-group>
-      <mat-card-title>
-        <div class="flex align-items-center">
-          <mat-icon class="me-2">info</mat-icon>
-          Student Details
-        </div>
-      </mat-card-title>
-      <mat-card-subtitle>
-        Student ID: {{ (studentSelected == 0) ? 'None' : (studentSelected) }}
-      </mat-card-subtitle>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-
-  </mat-card-content>
-</mat-card>
+<div class="student-image-container">
+  <img ngSrc="/logo.png" alt="Student Image" class="student-image"
+       width="256" height="256"/>
+</div>
+<mat-divider></mat-divider>
+<div class="container-fluid h-100 p-3">
+  <form [formGroup]="studentFormFields">
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Student ID</mat-label>
+      <input matInput placeholder="Student ID" formControlName="studentId" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="First Name" formControlName="firstName" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" formControlName="lastName" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Grade</mat-label>
+      <input matInput placeholder="Grade Name" formControlName="gradeName" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Section Name</mat-label>
+      <input matInput placeholder="Section Name" formControlName="sectionName" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Strand Name</mat-label>
+      <input matInput placeholder="Section Name" formControlName="strandName" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Guardian Name</mat-label>
+      <input matInput placeholder="Guardian Name" formControlName="guardianName" readonly/>
+    </mat-form-field>
+    <mat-form-field class="w-100" hideRequiredMarker>
+      <mat-label>Birthdate</mat-label>
+      <input matInput placeholder="Birthdate" formControlName="birthdate" readonly/>
+    </mat-form-field>
+  </form>
+</div>

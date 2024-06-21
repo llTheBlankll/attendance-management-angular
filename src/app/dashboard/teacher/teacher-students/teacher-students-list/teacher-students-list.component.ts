@@ -23,6 +23,7 @@ import { HttpResponse } from '@angular/common/http';
 interface TableStudent {
   lrn: number;
   name: string;
+  sexuality: string;
   grade: string;
 }
 
@@ -66,7 +67,7 @@ export class TeacherStudentsListComponent implements OnInit, OnChanges {
   studentsTableDataSource: MatTableDataSource<TableStudent> = new MatTableDataSource<TableStudent>(this.students);
 
   // Columns
-  displayedColumns: string[] = ['lrn', 'name', 'grade', 'actions'];
+  displayedColumns: string[] = ['lrn', 'name', 'sexuality', 'grade', 'actions'];
 
   // Paginator
   studentListPaginator = {
@@ -102,6 +103,7 @@ export class TeacherStudentsListComponent implements OnInit, OnChanges {
           return {
             lrn: student.id,
             name: student.firstName + " " + student.middleInitial + " " + student.lastName,
+            sexuality: student.sex,
             grade: student.gradeLevel.name
           }
         });

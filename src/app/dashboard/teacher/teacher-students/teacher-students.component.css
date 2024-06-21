@@ -1,0 +1,14 @@
+mat-grid-tile {
+  transition: 250ms ease-out;
+}
+
+mat-grid-tile:hover {
+  scale: 1.015;
+}
+
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}

@@ -3,3 +3,10 @@ mat-icon mat-card-avatar {
   height: 40px;
   font-size: 40px;
 }
+
+.student-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
