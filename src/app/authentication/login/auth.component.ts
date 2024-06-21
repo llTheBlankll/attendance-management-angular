@@ -87,10 +87,10 @@ export class AuthComponent {
 
           // Redirect to side-navigation page.
           const role = Roles[loginToken.role as unknown as keyof typeof Roles];
-          if (role == Roles.ADMIN) {
+          if (role === Roles.ADMIN) {
             console.log("Redirecting to admin dashboard");
             this.router.navigate(["/dashboard"]).then(_ => console.log("Redirected to admin dashboard"));
-          } else if (role == Roles.TEACHER) {
+          } else if (role === Roles.TEACHER) {
             console.log("Redirecting to teacher dashboard");
             this.redirectToTeacherDashboard(loginToken);
           } else {
