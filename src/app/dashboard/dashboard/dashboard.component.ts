@@ -6,6 +6,8 @@ import {TeacherDashboardComponent} from "../teacher/teacher-dashboard/teacher-da
 import {AdminDashboardComponent} from "../admin/admin-dashboard/admin-dashboard.component";
 import {Roles} from "../../enums/Roles";
 import {AttendanceComponent} from "../attendance/attendance.component";
+import {AnnouncementsComponent} from "../announcements/announcements.component";
+import {TeacherStudentsComponent} from "../teacher/teacher-students/teacher-students.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,9 @@ import {AttendanceComponent} from "../attendance/attendance.component";
     SideNavigationComponent,
     TeacherDashboardComponent,
     AdminDashboardComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    AnnouncementsComponent,
+    TeacherStudentsComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -34,17 +38,12 @@ export class DashboardComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   onNavigationSelected(navigation: string): void {
     this.selectedNavigation = navigation as NavigationLinks;
-    console.log("Selected Navigation: ", navigation);
   }
 
   onSectionSelected(sectionId: number) {
     this.sectionSelected = sectionId;
-    console.log("Selected Section: ", sectionId);
   }
 
   protected readonly NavigationLinks = NavigationLinks;

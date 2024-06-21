@@ -5,5 +5,9 @@
     <app-admin-dashboard></app-admin-dashboard>
   } @else if (this.selectedNavigation == NavigationLinks.ATTENDANCE) {
     <app-attendance></app-attendance>
+  } @else if (this.selectedNavigation == NavigationLinks.ANNOUNCEMENTS) {
+    <app-announcements></app-announcements>
+  } @else if (this.selectedNavigation == NavigationLinks.TEACHER_STUDENTS) {
+    <app-teacher-students [section]="this.sectionSelected"></app-teacher-students>
   }
 </app-side-navigation>

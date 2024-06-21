@@ -1,0 +1,48 @@
+<div style="height: 450px; overflow: auto;">
+  <table [dataSource]="this.studentsTableDataSource" class="mat-elevation-z2 w-100 mb-3 overflow-auto" mat-table>
+    <ng-container matColumnDef="lrn">
+      <th *matHeaderCellDef mat-header-cell>Learner Reference No.</th>
+      <td *matCellDef="let student" mat-cell>{{ student.lrn }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell>Full Name</th>
+      <td *matCellDef="let student" mat-cell>{{ student.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="grade">
+      <th *matHeaderCellDef mat-header-cell>Grade</th>
+      <td *matCellDef="let student" mat-cell>{{ student.grade }}</td>
+    </ng-container>
+
+    <td colspan="4" style="text-align: center;" *matNoDataRow>
+      <h3>
+        No Students Found.
+      </h3>
+    </td>
+
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell>Actions</th>
+      <td *matCellDef="let student" mat-cell>
+        <button (click)="onEdit(student.lrn)" color="primary" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="onDelete(student.lrn)" color="warn" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button (click)="this.selectStudents(student.lrn)" mat-icon-button>
+          <mat-icon>
+            visibility
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  </table>
+</div>
+<mat-paginator (page)="this.onPaginationChange($event)"
+               [pageSizeOptions]="this.studentListPaginator.pageSizeOptions"
+               [pageIndex]="this.studentListPaginator.currentPage"
+               [length]="this.studentListPaginator.totalElements"
+               [pageSize]="studentListPaginator.pageSize">
+
+</mat-paginator>
