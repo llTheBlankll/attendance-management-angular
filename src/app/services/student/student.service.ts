@@ -100,7 +100,7 @@ export class StudentService {
     });
   }
 
-  public searchStudents(firstName: string, lastName: string, page: number, size: number, sortBy: string = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
+  public searchStudents(firstName: string, lastName: string, page: number, size: number, sortBy = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
     return this.http.get<StudentPaging>(this.apiUrl + "/api/v1/students/search", {
       observe: 'response',
       responseType: 'json',
@@ -115,7 +115,7 @@ export class StudentService {
     });
   }
 
-  public getStudentsBySection(sectionId: number, page: number, size: number, sortBy: string = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
+  public getStudentsBySection(sectionId: number, page: number, size: number, sortBy = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
     return this.http.get<StudentPaging>(this.apiUrl + `/api/v1/students/all/section/${sectionId}`, {
       observe: 'response',
       responseType: 'json',
@@ -128,7 +128,7 @@ export class StudentService {
     });
   }
 
-  public getStudentsByGradeLevel(gradeLevelId: number, page: number, size: number, sortBy: string = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
+  public getStudentsByGradeLevel(gradeLevelId: number, page: number, size: number, sortBy = "lastName", orderBy: SortDirection = SortDirection.ASC): Observable<HttpResponse<StudentPaging>> {
     return this.http.get<StudentPaging>(this.apiUrl + `/api/v1/students/all/grade-level/${gradeLevelId}`, {
       observe: 'response',
       responseType: 'json',

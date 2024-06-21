@@ -73,7 +73,7 @@ export class SectionService {
     });
   }
 
-  public getAllSections(page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName"): Observable<any> {
+  public getAllSections(page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy = "sectionName"): Observable<any> {
     return this.http.get(this.apiUrl + "/all", {
       params: {
         page: page,
@@ -90,7 +90,7 @@ export class SectionService {
     return this.http.get(this.apiUrl + `/${sectionId}`, {responseType: 'json', observe: 'response'});
   }
 
-  public getSectionsByTeacher(teacherId: number, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName") {
+  public getSectionsByTeacher(teacherId: number, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy = "sectionName") {
     return this.http.get(this.apiUrl + "/teacher", {
       params: {
         teacherId: teacherId,
@@ -104,7 +104,7 @@ export class SectionService {
     });
   }
 
-  public getSectionsByGradeLevel(gradeLevelId: number, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName") {
+  public getSectionsByGradeLevel(gradeLevelId: number, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy = "sectionName") {
     return this.http.get(this.apiUrl + "/grade-level", {
       params: {
         gradeLevelId: gradeLevelId,
@@ -118,7 +118,7 @@ export class SectionService {
     });
   }
 
-  public searchSections(room: string, name: string, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy: string = "sectionName") {
+  public searchSections(room: string, name: string, page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy = "sectionName") {
     return this.http.get(this.apiUrl + "/search", {
       params: {
         room: room,

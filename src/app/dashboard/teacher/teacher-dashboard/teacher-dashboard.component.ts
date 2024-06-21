@@ -86,10 +86,10 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
   protected _getAttendanceOverviewBy: AttendanceDay = AttendanceDay.TODAY;
 
   // On Time, Late, Absent, and Total Students
-  protected onTimeAttendance: number = 0;
-  protected lateAttendance: number = 0;
-  protected absentAttendance: number = 0;
-  protected totalStudents: number = 0;
+  protected onTimeAttendance = 0;
+  protected lateAttendance = 0;
+  protected absentAttendance = 0;
+  protected totalStudents = 0;
 
   // Recent Activities table and Data Source
   protected displayedColumns: string[] = ['name', 'grade', 'section', 'time', 'date', 'status'];
@@ -98,7 +98,7 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
 
   // Section
   @Input()
-  public section: number = 0;
+  public section = 0;
 
   constructor() {
   }
@@ -362,7 +362,7 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
     this.recentActivitiesTableDataSource.data = this.recentActivitiesRow;
   }
 
-  addRealTimeAttendanceChartData(data: number, dataset: number = 0) {
+  addRealTimeAttendanceChartData(data: number, dataset = 0) {
     const now = new Date();
     now.setSeconds(0, 0);
     const roundedTime = now.toLocaleTimeString("en-gb");
@@ -383,7 +383,7 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
     }
   }
 
-  updateAttendanceOverviewData(label: string[], data: number[], dataset: number = 0) {
+  updateAttendanceOverviewData(label: string[], data: number[], dataset = 0) {
     this.attendanceOverviewChart.data.labels = label;
     this.attendanceOverviewChart.data.datasets[dataset].data = data;
     this.attendanceOverviewChart.update();

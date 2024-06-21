@@ -26,7 +26,7 @@ import {MatDivider} from "@angular/material/divider";
 export class TeacherStudentsComponent {
 
   @Input()
-  public section: number = 0;
+  public section = 0;
 
   onStudentSelected(studentId: number) {
     console.log(`Selected student: ${studentId}`);

@@ -10,5 +10,5 @@ import {Component, Input} from '@angular/core';
 export class TeacherSectionComponent {
 
   @Input()
-  public section: number = 0;
+  public section = 0;
 }

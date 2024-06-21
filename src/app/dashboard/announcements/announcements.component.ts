@@ -87,9 +87,9 @@ export class AnnouncementsComponent implements OnInit {
   ]
 
   // Mat Chips statistics data
-  totalPosted: number = 0;
-  scheduledPost: number = 0;
-  draftPost: number = 0;
+  totalPosted = 0;
+  scheduledPost = 0;
+  draftPost = 0;
 
   // Mat Table data
   displayedColumns: string[] = ['title', 'status', 'viewers'];
