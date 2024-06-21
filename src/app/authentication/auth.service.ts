@@ -1,10 +1,8 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable, of} from "rxjs";
-import {LoginDTO} from "../DTO/DTOList";
-import {StatusMessageResponse} from "../DTO/StatusMessageResponse";
-import {ExecutionStatus} from "../enums/ExecutionStatus";
+import {LoginDTO, StatusMessageResponse, ResponseStatus} from "../DTO/DTOList";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +10,8 @@ import {ExecutionStatus} from "../enums/ExecutionStatus";
 export class AuthService {
   private readonly loginUrl: string = environment.authenticationUrl;
   private readonly baseUrl: string = environment.apiUrl;
-  private readonly http: HttpClient = inject(HttpClient);
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   isAuthenticated(): boolean {
@@ -25,16 +22,9 @@ export class AuthService {
       this.http.post<HttpResponse<StatusMessageResponse>>(this.baseUrl + `/api/auth/is-valid?token=${token}&username=${username}`, {responseType: 'json', observe: 'response'})
         .pipe(
           map((response: HttpResponse<StatusMessageResponse>) => {
-
-            if (response.status === 200) {
-              const message: StatusMessageResponse | null = response.body;
-              if (message === null) {
-                return of(false);
-              }
-
-              if (message.status === ExecutionStatus.VALID) {
-                return of(true);
-              }
+            const message = response.body;
+            if (message?.status == ResponseStatus.VALID) {
+              return of(true);
             }
 
             return of(false);

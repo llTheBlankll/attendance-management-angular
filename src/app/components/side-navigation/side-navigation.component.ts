@@ -104,13 +104,13 @@ export class SideNavigationComponent implements OnInit {
     },
     {
       icon: "groups",
-      title: (this.role == Roles.TEACHER) ? 'Your Students' : 'Students',
+      title: (this.role === Roles.TEACHER) ? 'Your Students' : 'Students',
       routerLink: '/dashboard/students',
       userRoles: [Roles.ADMIN, Roles.TEACHER]
     },
     {
       icon: "list",
-      title: (this.role == Roles.TEACHER) ? 'Your Section' : 'Sections',
+      title: (this.role === Roles.TEACHER) ? 'Your Section' : 'Sections',
       routerLink: '/dashboard/sections',
       userRoles: [Roles.ADMIN, Roles.TEACHER]
     },
@@ -134,9 +134,9 @@ export class SideNavigationComponent implements OnInit {
     });
 
     // Check if the user is logged in
-    if (this.role == Roles.GUEST) {
+    if (this.role === Roles.GUEST) {
       this.router.navigate(['/login']).then(_ => console.log("Navigated to login page"));
-    } else if (this.role == Roles.TEACHER) {
+    } else if (this.role === Roles.TEACHER) {
       // If teacher, get the teacher's section
       // Get teacher id from session storage
       // let teacherId = Number(sessionStorage.getItem("user_id"));

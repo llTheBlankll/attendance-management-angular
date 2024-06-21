@@ -24,7 +24,7 @@ export class StudentService {
       this.http.get<number>(this.apiUrl + "/api/v1/students/statistics/all")
         .subscribe(response => {
           const responseType: string = typeof (response);
-          if (responseType == "number") {
+          if (responseType === "number") {
             console.log("Total Students: " + response);
             subscriber.next(response as number);
           } else {
