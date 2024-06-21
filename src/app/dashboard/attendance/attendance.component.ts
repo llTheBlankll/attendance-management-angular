@@ -150,7 +150,7 @@ export class AttendanceComponent implements OnInit {
 
   updateSectionsSelection() {
     this.sectionService.getAllSectionsNoPaging().subscribe((response: HttpResponse<Section[]>) => {
-      if (response.status != 200 && response.body != null) {
+      if (response.status !== 200 && response.body != null) {
         console.error("Failed to get all sections.");
         return;
       }
@@ -173,7 +173,7 @@ export class AttendanceComponent implements OnInit {
   getAttendances(sectionId: number, gradeLevelId: number, date: Date): void {
     // Get all attendances based on the section, grade level, and date.
     this.attendanceService.getAllSectionAndGradeLevelAttendanceByDate(sectionId, gradeLevelId, date,this.attendancePagination.currentPage, this.attendancePagination.pageSize, "status", SortDirection.DESC).subscribe((response: HttpResponse<AttendancePaging>) => {
-      if (response.status != 200 && response.body == null) {
+      if (response.status !== 200 && response.body == null) {
         console.error("Failed to get all attendances: ", response.body);
         return;
       }

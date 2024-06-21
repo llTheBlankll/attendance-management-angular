@@ -23,7 +23,7 @@ export class AuthService {
         .pipe(
           map((response: HttpResponse<StatusMessageResponse>) => {
             const message = response.body;
-            if (message?.status == ResponseStatus.VALID) {
+            if (message?.status === ResponseStatus.VALID) {
               return of(true);
             }
 
