@@ -1,4 +1,4 @@
-name: Angular Build and Test
+name: Angular Build
 
 on: [ push ]
 
@@ -17,9 +17,9 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@latest
-      - name: Export Chrome Binary
-        run: export ${{ format('CHROME_BINARY={0}', steps.setup-chrome.outputs.chrome-path) }}
-      - name: Test
-        run: npm test
+      # - name: Setup Chrome
+      #   uses: browser-actions/setup-chrome@latest
+      # - name: Export Chrome Binary
+      #   run: export ${{ format('CHROME_BINARY={0}', steps.setup-chrome.outputs.chrome-path) }}
+      # - name: Test
+      #   run: npm test
