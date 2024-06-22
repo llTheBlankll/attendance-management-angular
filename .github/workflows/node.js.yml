@@ -20,6 +20,6 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
       - name: Export Chrome Binary
-        run: echo ${{ format("{0}={1} >> {2}", "CHROME_BINARY", steps.setup-chrome.outputs.chrome-path, $GITHUB_ENV) }}
+        run: export ${{ format('CHROME_BINARY={1} >> {2}', steps.setup-chrome.outputs.chrome-path, $GITHUB_ENV) }}
       - name: Test
         run: npm test
