@@ -49,7 +49,7 @@ export class TeacherStudentsComponent implements OnInit {
   // Pie Chart with Chart JS
   public pieChartLabels = ["Male", "Female"];
   public pieChartData = [512, 235];
-  public pieChart: any;
+  public pieChart: Chart<"pie", number[], string> | undefined;
 
   ngOnInit() {
     this.pieChart = new Chart('pieChart', {

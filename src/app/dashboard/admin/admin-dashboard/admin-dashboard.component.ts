@@ -91,7 +91,7 @@ export class AdminDashboardComponent implements OnInit {
   protected displayedColumns: string[] = ['name', 'grade', 'section', 'time', 'date', 'status'];
   protected recentActivitiesRow: RecentActivitiesRow[] = [
   ];
-  protected recentActivitiesTableDataSource: MatTableDataSource<any> = new MatTableDataSource(this.recentActivitiesRow);
+  protected recentActivitiesTableDataSource: MatTableDataSource<RecentActivitiesRow> = new MatTableDataSource(this.recentActivitiesRow);
 
 
   constructor() {
