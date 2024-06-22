@@ -12,8 +12,6 @@ export class AttendanceLineChartService {
   private baseUrl: string = environment.apiUrl;
   private http: HttpClient = inject(HttpClient);
 
-  constructor() { }
-
   getAttendanceLineChart(status: Status, dateRange: DateRange): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/v1/attendances/graphic-organizers/line-chart?status=${status}`, dateRange, {observe: 'response', responseType: 'json'});
   }

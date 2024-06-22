@@ -1,14 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopHeaderComponent } from './top-header.component';
+import {provideRouter} from "@angular/router";
+import {routes} from "../../app.routes";
+import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import {provideAnimations} from "@angular/platform-browser/animations";
 
-describe('TopNavigationComponent', () => {
+describe('TopHeaderComponent', () => {
   let component: TopHeaderComponent;
   let fixture: ComponentFixture<TopHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopHeaderComponent]
+      imports: [TopHeaderComponent],
+      providers: [
+        provideRouter(
+          routes
+        ),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideAnimations()
+      ]
     })
     .compileComponents();
 

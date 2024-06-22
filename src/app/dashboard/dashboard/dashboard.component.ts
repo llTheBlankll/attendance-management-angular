@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {SideNavigationComponent} from "../../components/side-navigation/side-navigation.component";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {NavigationLinks} from "../../enums/NavLinks";
 import {TeacherDashboardComponent} from "../teacher/teacher-dashboard/teacher-dashboard.component";
 import {AdminDashboardComponent} from "../admin/admin-dashboard/admin-dashboard.component";

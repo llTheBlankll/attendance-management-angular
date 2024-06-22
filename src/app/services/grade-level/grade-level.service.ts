@@ -11,9 +11,6 @@ export class GradeLevelService {
   private apiUrl = environment.apiUrl + "/api/v1/grade-levels";
   private http: HttpClient = inject(HttpClient);
 
-  constructor() {
-  }
-
   public getAllGradeLevelsNoPaging() {
     return this.http.get<GradeLevel[]>(`${this.apiUrl}/all`, {
       params: {

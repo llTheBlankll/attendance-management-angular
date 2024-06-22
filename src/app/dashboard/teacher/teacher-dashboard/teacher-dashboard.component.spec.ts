@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeacherDashboardComponent } from './teacher-dashboard.component';
+import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import {provideAnimations} from "@angular/platform-browser/animations";
 
 describe('TeacherDashboardComponent', () => {
   let component: TeacherDashboardComponent;
@@ -8,7 +11,12 @@ describe('TeacherDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TeacherDashboardComponent]
+      imports: [TeacherDashboardComponent],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideAnimations()
+      ]
     })
     .compileComponents();
 

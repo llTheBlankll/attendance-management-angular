@@ -13,9 +13,6 @@ export class SectionService {
   private apiUrl: string = environment.apiUrl + "/api/v1/sections";
   private http: HttpClient = inject(HttpClient);
 
-  constructor() {
-  }
-
   public createSection(section: Section) {
     return this.http.post(this.apiUrl + "/create", section, {responseType: 'json', observe: 'response'});
   }

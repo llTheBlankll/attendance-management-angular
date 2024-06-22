@@ -21,6 +21,4 @@ export class AttendanceSubscriberWebSocketService {
 
     return this.subject;
   }
-
-  constructor() { }
 }

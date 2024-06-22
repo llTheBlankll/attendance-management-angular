@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable, of} from "rxjs";
-import {LoginDTO, ResponseStatus} from "../DTO/DTOList";
+import {LoginDTO} from "../DTO/DTOList";
 import {StatusMessageResponse} from "../DTO/StatusMessageResponse";
 import {ExecutionStatus} from "../enums/ExecutionStatus";
 
@@ -12,16 +12,17 @@ import {ExecutionStatus} from "../enums/ExecutionStatus";
 export class AuthService {
   private readonly loginUrl: string = environment.authenticationUrl;
   private readonly baseUrl: string = environment.apiUrl;
-
-  constructor(private http: HttpClient) {
-  }
+  private readonly http: HttpClient = inject(HttpClient);
 
   isAuthenticated(): boolean {
     const token: string | null = sessionStorage.getItem("token");
     const username: string | null = sessionStorage.getItem("username");
 
     if (token && username) {
-      this.http.post<HttpResponse<StatusMessageResponse>>(this.baseUrl + `/api/auth/is-valid?token=${token}&username=${username}`, {responseType: 'json', observe: 'response'})
+      this.http.post<HttpResponse<StatusMessageResponse>>(this.baseUrl + `/api/auth/is-valid?token=${token}&username=${username}`, {
+        responseType: 'json',
+        observe: 'response'
+      })
         .pipe(
           map((response: HttpResponse<StatusMessageResponse>) => {
             // Check response body if it is valid
@@ -42,8 +43,11 @@ export class AuthService {
     return false;
   }
 
-  login(login: LoginDTO): Observable<any> {
+  login(login: LoginDTO): Observable<HttpResponse<LoginDTO | StatusMessageResponse>> {
     console.log("Requesting login to " + this.loginUrl);
-    return this.http.post<LoginDTO | StatusMessageResponse>(this.loginUrl, login, {responseType: 'json', observe: 'response'});
+    return this.http.post<LoginDTO | StatusMessageResponse>(this.loginUrl, login, {
+      responseType: 'json',
+      observe: 'response'
+    });
   }
 }

@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewStudentComponent } from './view-student.component';
+import {provideRouter} from "@angular/router";
+import {routes} from "../../../app.routes";
+import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClientTesting} from "@angular/common/http/testing";
 
 describe('ViewStudentComponent', () => {
   let component: ViewStudentComponent;
@@ -8,7 +12,12 @@ describe('ViewStudentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ViewStudentComponent]
+      imports: [ViewStudentComponent],
+      providers: [
+        provideRouter(routes),
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     })
     .compileComponents();
 

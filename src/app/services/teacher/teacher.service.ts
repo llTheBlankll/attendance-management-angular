@@ -11,8 +11,6 @@ export class TeacherService {
   private apiUrl: string = environment.apiUrl;
   private http: HttpClient = inject(HttpClient);
 
-  constructor() { }
-
   getTeacherByUserId(userId: number): Observable<any> {
     return this.http.get(this.apiUrl + `/api/v1/teachers/user?id=${userId}`, {
       observe: 'response',

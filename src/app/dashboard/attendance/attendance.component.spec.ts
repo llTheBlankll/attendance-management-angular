@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AttendanceComponent } from './attendance.component';
+import {provideRouter} from "@angular/router";
+import {routes} from "../../app.routes";
+import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import {provideAnimations} from "@angular/platform-browser/animations";
 
 describe('AttendanceComponent', () => {
   let component: AttendanceComponent;
@@ -8,7 +13,13 @@ describe('AttendanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttendanceComponent]
+      imports: [AttendanceComponent],
+      providers: [
+        provideRouter(routes),
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideAnimations()
+      ]
     })
     .compileComponents();
 

@@ -16,10 +16,13 @@ export class Top10StudentsListComponent implements OnChanges, OnInit {
   public section: number = 0;
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // ! throw new Error('Method not implemented.');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+    if (changes["section"]) {
+      console.log('Section changed: ', this.section);
+    }
+    // ! throw new Error('Method not implemented.');
   }
 }

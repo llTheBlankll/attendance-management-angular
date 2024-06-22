@@ -51,7 +51,6 @@ export class TeacherStudentsComponent implements OnInit {
   public pieChartData = [512, 235];
   public pieChart: any;
 
-
   ngOnInit() {
     this.pieChart = new Chart('pieChart', {
       type: 'pie',

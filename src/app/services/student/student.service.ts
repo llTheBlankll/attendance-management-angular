@@ -15,9 +15,6 @@ export class StudentService {
   apiUrl: string = environment.apiUrl;
   http: HttpClient = inject(HttpClient);
 
-  constructor() {
-  }
-
   countStudents(): Observable<number> {
     return new Observable<number>(subscriber => {
 

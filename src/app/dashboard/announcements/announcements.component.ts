@@ -108,7 +108,7 @@ export class AnnouncementsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
 
   onAnnouncementPaginationChange(event: PageEvent): void {
