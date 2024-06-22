@@ -88,10 +88,10 @@ export class SideNavigationComponent implements OnInit {
   protected role: Roles = Roles[this.roleString as keyof typeof Roles];
 
   @Output()
-  public selectedNavigation: EventEmitter<string> = new EventEmitter<string>();
+  public readonly selectedNavigation: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
-  public sectionSelected: EventEmitter<number> = new EventEmitter<number>();
+  public readonly sectionSelected: EventEmitter<number> = new EventEmitter<number>();
 
   public sidenavLinks: Array<SideNavLink> = [
     {icon: 'dashboard', title: 'Dashboard', routerLink: '/dashboard/admin', userRoles: [Roles.ADMIN]},

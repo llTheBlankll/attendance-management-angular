@@ -39,7 +39,7 @@ export class TopHeaderComponent implements OnInit {
   public sidenav: MatDrawer | any;
 
   @Output()
-  public sectionSelected: EventEmitter<number> = new EventEmitter<number>();
+  public readonly sectionSelected: EventEmitter<number> = new EventEmitter<number>();
 
   private router: Router = inject(Router);
   protected sections: Section[] = [];

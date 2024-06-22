@@ -60,7 +60,7 @@ export class TeacherStudentsListComponent implements OnInit, OnChanges {
   public section = 0;
 
   @Output()
-  public selectedStudent: EventEmitter<number> = new EventEmitter<number>();
+  public readonly selectedStudent: EventEmitter<number> = new EventEmitter<number>();
 
   // Students list
   students: TableStudent[] = [];
