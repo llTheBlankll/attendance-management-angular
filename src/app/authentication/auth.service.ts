@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable, of} from "rxjs";
-import {LoginDTO} from "../DTO/DTOList";
+import {LoginDTO, LoginToken} from "../DTO/DTOList";
 import {StatusMessageResponse} from "../DTO/StatusMessageResponse";
 import {ExecutionStatus} from "../enums/ExecutionStatus";
 
@@ -43,9 +43,9 @@ export class AuthService {
     return false;
   }
 
-  login(login: LoginDTO): Observable<HttpResponse<LoginDTO | StatusMessageResponse>> {
+  login(login: LoginDTO): Observable<HttpResponse<LoginToken | StatusMessageResponse>> {
     console.log("Requesting login to " + this.loginUrl);
-    return this.http.post<LoginDTO | StatusMessageResponse>(this.loginUrl, login, {
+    return this.http.post<LoginToken | StatusMessageResponse>(this.loginUrl, login, {
       responseType: 'json',
       observe: 'response'
     });

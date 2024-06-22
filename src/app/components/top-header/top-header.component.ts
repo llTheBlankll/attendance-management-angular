@@ -36,7 +36,7 @@ import {NgOptimizedImage} from "@angular/common";
 })
 export class TopHeaderComponent implements OnInit {
   @Input()
-  public sidenav: MatDrawer | any;
+  public sidenav: MatDrawer | undefined;
 
   @Output()
   public readonly sectionSelected: EventEmitter<number> = new EventEmitter<number>();

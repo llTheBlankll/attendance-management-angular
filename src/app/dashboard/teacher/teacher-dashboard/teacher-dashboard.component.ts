@@ -94,7 +94,7 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
   // Recent Activities table and Data Source
   protected displayedColumns: string[] = ['name', 'grade', 'section', 'time', 'date', 'status'];
   protected recentActivitiesRow: RecentActivitiesRow[] = [];
-  protected recentActivitiesTableDataSource: MatTableDataSource<any> = new MatTableDataSource(this.recentActivitiesRow);
+  protected recentActivitiesTableDataSource: MatTableDataSource<RecentActivitiesRow> = new MatTableDataSource(this.recentActivitiesRow);
 
   // Section
   @Input()
@@ -384,9 +384,11 @@ export class TeacherDashboardComponent implements OnInit, OnChanges {
   }
 
   updateAttendanceOverviewData(label: string[], data: number[], dataset = 0) {
-    this.attendanceOverviewChart.data.labels = label;
-    this.attendanceOverviewChart.data.datasets[dataset].data = data;
-    this.attendanceOverviewChart.update();
+    if (this.attendanceOverviewChart !== undefined) {
+      this.attendanceOverviewChart.data.labels = label;
+      this.attendanceOverviewChart.data.datasets[dataset].data = data;
+      this.attendanceOverviewChart.update();
+    }
   }
 
   updateDashboardStatistics() {

@@ -93,7 +93,7 @@ export class AnnouncementsComponent implements OnInit {
 
   // Mat Table data
   displayedColumns: string[] = ['title', 'status', 'viewers'];
-  announcementTableDataSource: MatTableDataSource<any> = new MatTableDataSource(this.announcements);
+  announcementTableDataSource: MatTableDataSource<{}> = new MatTableDataSource(this.announcements);
 
   // Announcement Pagination
   // Pagination info

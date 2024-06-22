@@ -33,15 +33,15 @@ export class StudentService {
     })
   }
 
-  countStudentsBySection(sectionId: number) {
+  countStudentsBySection(sectionId: number): Observable<HttpResponse<CountDTO>> {
     return this.http.get<CountDTO>(this.apiUrl + `/api/v1/students/statistics/section?section=${sectionId}`, {
       observe: 'response',
       responseType: 'json'
     });
   }
 
-  public getAllStudents(page: number, size: number): Observable<any> {
-    return this.http.get(this.apiUrl + `/api/v1/students/all?page=${page}&size=${size}`);
+  public getAllStudents(page: number, size: number): Observable<StudentPaging> {
+    return this.http.get<StudentPaging>(this.apiUrl + `/api/v1/students/all?page=${page}&size=${size}`);
   }
 
   public createStudent(student: Student): Observable<HttpResponse<StatusMessageResponse>> {
@@ -136,9 +136,5 @@ export class StudentService {
         orderBy: orderBy
       }
     });
-  }
-
-  public isStudent(obj: any): obj is Student {
-    return 'id' in obj && 'name' in obj; // replace 'id' and 'name' with actual properties of Student
   }
 }

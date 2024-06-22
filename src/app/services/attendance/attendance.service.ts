@@ -14,24 +14,21 @@ export class AttendanceService {
   apiUrl: string = environment.apiUrl + "/api/v1/attendances";
   http: HttpClient = inject(HttpClient);
 
-  constructor() {
-  }
-
-  countAttendance(dateRange: DateRange, status: Status): Observable<any> {
+  countAttendance(dateRange: DateRange, status: Status) {
     return this.http.post(this.apiUrl + `/status/${status}/date-range`, dateRange, {
       observe: 'response',
       responseType: 'json'
     });
   }
 
-  countAttendanceInSectionByDateRange(sectionId: number, dateRange: DateRange, status: Status): Observable<any> {
+  countAttendanceInSectionByDateRange(sectionId: number, dateRange: DateRange, status: Status) {
     return this.http.post(this.apiUrl + `/status/${status}/section/${sectionId}/date-range`, dateRange, {
       observe: 'response',
       responseType: 'json'
     });
   }
 
-  countAttendanceInSectionByDate(sectionId: number, date: Date, status: Status): Observable<any> {
+  countAttendanceInSectionByDate(sectionId: number, date: Date, status: Status) {
     const formattedDate: string = date.toISOString().split('T')[0];
     return this.http.get<CountDTO>(this.apiUrl + `/status/${status}/section/${sectionId}/date?date=${formattedDate}`, {
       observe: 'response',
@@ -39,7 +36,7 @@ export class AttendanceService {
     });
   }
 
-  getAllSectionAndGradeLevelAttendanceByDate(sectionId: number, gradeLevelId: number, date: Date, page: number, size: number, sortBy = "date", orderBy: SortDirection = SortDirection.ASC): Observable<any> {
+  getAllSectionAndGradeLevelAttendanceByDate(sectionId: number, gradeLevelId: number, date: Date, page: number, size: number, sortBy = "date", orderBy: SortDirection = SortDirection.ASC) {
     const formattedDate = date.toISOString().split('T')[0];
 
     return this.http.get(this.apiUrl + `/statistics/section/${sectionId}/grade-level/${gradeLevelId}/date`, {

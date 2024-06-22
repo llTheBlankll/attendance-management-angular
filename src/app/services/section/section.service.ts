@@ -1,9 +1,10 @@
 import {inject, Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Section} from "../../DTO/SectionDTO";
 import {SortDirection} from "../../enums/SortDirection";
+import {StatusMessageResponse} from "../../DTO/StatusMessageResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -13,27 +14,15 @@ export class SectionService {
   private apiUrl: string = environment.apiUrl + "/api/v1/sections";
   private http: HttpClient = inject(HttpClient);
 
-  public createSection(section: Section) {
-    return this.http.post(this.apiUrl + "/create", section, {responseType: 'json', observe: 'response'});
+  public createSection(section: Section): Observable<HttpResponse<StatusMessageResponse>> {
+    return this.http.post<StatusMessageResponse>(this.apiUrl + "/create", section, {responseType: 'json', observe: 'response'});
   }
 
-  public updateSection(sectionId: number, section: Section) {
-    return this.http.put(this.apiUrl + `/${sectionId}`, section, {responseType: 'json', observe: 'response'});
+  public updateSection(sectionId: number, section: Section): Observable<HttpResponse<StatusMessageResponse>> {
+    return this.http.put<StatusMessageResponse>(this.apiUrl + `/${sectionId}`, section, {responseType: 'json', observe: 'response'});
   }
-
-  public updateSectionTeacher(sectionId: number, teacherId: number) {
-    return this.http.patch(this.apiUrl + `/${sectionId}/teacher`, {
-      params: {
-        sectionId: sectionId,
-        teacherId: teacherId
-      },
-      responseType: 'json',
-      observe: 'response'
-    });
-  }
-
-  public updateSectionGradeLevel(sectionId: number, gradeLevelId: number) {
-    return this.http.patch(this.apiUrl + `/${sectionId}/grade-level`, {
+  public updateSectionGradeLevel(sectionId: number, gradeLevelId: number): Observable<StatusMessageResponse> {
+    return this.http.patch<StatusMessageResponse>(this.apiUrl + `/${sectionId}/grade-level`, {
       params: {
         gradeLevelId: gradeLevelId
       },
@@ -42,8 +31,8 @@ export class SectionService {
     });
   }
 
-  public updateSectionName(sectionId: number, name: string) {
-    return this.http.patch(this.apiUrl + `/${sectionId}/name`, null, {
+  public updateSectionName(sectionId: number, name: string): Observable<HttpResponse<StatusMessageResponse>> {
+    return this.http.patch<StatusMessageResponse>(this.apiUrl + `/${sectionId}/name`, null, {
       params: {
         name: name
       },
@@ -52,15 +41,15 @@ export class SectionService {
     });
   }
 
-  public deleteSection(sectionId: number) {
-    return this.http.delete(this.apiUrl + `/${sectionId}`, {
+  public deleteSection(sectionId: number): Observable<HttpResponse<StatusMessageResponse>> {
+    return this.http.delete<StatusMessageResponse>(this.apiUrl + `/${sectionId}`, {
         responseType: 'json',
         observe: 'response'
       }
     );
   }
 
-  public getAllSectionsNoPaging() {
+  public getAllSectionsNoPaging(): Observable<HttpResponse<Section[]>> {
     return this.http.get<Section[]>(this.apiUrl + "/all", {
       params: {
         noPaging: true
@@ -70,7 +59,7 @@ export class SectionService {
     });
   }
 
-  public getAllSections(page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy = "sectionName"): Observable<any> {
+  public getAllSections(page: number, size: number, orderBy: SortDirection = SortDirection.ASC, sortBy = "sectionName") {
     return this.http.get(this.apiUrl + "/all", {
       params: {
         page: page,
@@ -83,7 +72,7 @@ export class SectionService {
     });
   }
 
-  public getSectionById(sectionId: number): Observable<any> {
+  public getSectionById(sectionId: number) {
     return this.http.get(this.apiUrl + `/${sectionId}`, {responseType: 'json', observe: 'response'});
   }
 

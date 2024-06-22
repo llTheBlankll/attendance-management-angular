@@ -16,6 +16,7 @@ import {Router} from "@angular/router";
 import {TeacherService} from "../../services/teacher/teacher.service";
 import {Roles} from "../../enums/Roles";
 import {Teacher} from "../../DTO/TeacherDTO";
+import {StatusMessageResponse} from "../../DTO/StatusMessageResponse";
 
 @Component({
   selector: 'app-login',
@@ -74,10 +75,10 @@ export class AuthComponent {
       console.log("Logging in");
       // Check if status code 200
       this.loginService.login(loginData).pipe(
-        map((response: HttpResponse<any>) => {
+        map((response: HttpResponse<LoginToken | StatusMessageResponse>) => {
           console.log("Login successful");
           // Get token
-          const loginToken: LoginToken = response.body;
+          const loginToken: LoginToken = response.body as LoginToken;
 
           // Show alert message
           this.alert.open("Login successful", "Close");
