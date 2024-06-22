@@ -20,9 +20,4 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
       - name: Test
-        run: npm run test:ci
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: node-app
-          path: dist/angular-workflow-example
+        run: npm test
