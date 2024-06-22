@@ -28,7 +28,7 @@ export class AuthService {
             // Check response body if it is valid
             if (response.body) {
               const message = response.body;
-              if (message?.status == ExecutionStatus.VALID) {
+              if (message?.status === ExecutionStatus.VALID) {
                 return of(true);
               }
             }
